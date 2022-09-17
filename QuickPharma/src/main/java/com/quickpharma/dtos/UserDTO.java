@@ -1,37 +1,26 @@
-package com.quickpharma.entities;
+package com.quickpharma.dtos;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.beans.BeanUtils;
 
-@Entity
-@Table(name="users")
-public class User {
-	
-	@Id
-	@Column(name="user_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+import com.quickpharma.entities.User;
+
+public class UserDTO {
+
 	private int userId;
 	
-	@Column(name="first_name")
 	private String firstName;
 	
-	@Column(name="last_name")
 	private String lastName;
 	
 	private String email;
 	
 	private String password;
 	
-	@Column(name="mobile_no")
 	private String mobileNumber;
 	
 	private String role;
 
-	public User(int userId, String firstName, String lastName, String email, String password, String mobileNumber,
+	public UserDTO(int userId, String firstName, String lastName, String email, String password, String mobileNumber,
 			String role) {
 		super();
 		this.userId = userId;
@@ -42,15 +31,11 @@ public class User {
 		this.mobileNumber = mobileNumber;
 		this.role = role;
 	}
-	
-	
 
-	public User() {
+	public UserDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public int getUserId() {
 		return userId;
@@ -110,10 +95,20 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "UserDTO [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", mobileNumber=" + mobileNumber + ", role=" + role + "]";
 	}
 	
+	public static UserDTO fromEntity(User user) {
+		UserDTO dto = new UserDTO();
+		BeanUtils.copyProperties(user, dto);
+		return dto;
+	}
 	
-	
+	public static User toEntity(UserDTO dto) {
+		System.out.println(dto.getPassword());
+		User user = new User();
+		BeanUtils.copyProperties(dto, user);
+		return user;
+	}
 }
