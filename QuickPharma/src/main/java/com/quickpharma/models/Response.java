@@ -11,10 +11,11 @@ public class Response {
 		Map<String, Object> map = new HashMap<>();
 		map.put("status", "success");
 		if(data != null)
+
 			map.put("data", data);
 		return ResponseEntity.ok(map);
 	}
-	
+
 	public static ResponseEntity<?> error(Object err) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("status", "error");
@@ -23,3 +24,4 @@ public class Response {
 		return ResponseEntity.ok(map);
 	}
 }
+

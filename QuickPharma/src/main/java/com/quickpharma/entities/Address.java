@@ -1,3 +1,4 @@
+
 package com.quickpharma.entities;
 
 import java.util.Date;
@@ -30,10 +31,12 @@ public class Address {
 	@Column(name="timestamp", nullable = false,
     columnDefinition="TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
 	private Date timestamp = new Date();
-	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	public Address()
+	{
+		
 	}
+
 	public Address(int addressId, String street, String city, int pincode, String state, int houseNumber, int userId,
 			Date timestamp) {
 		super();
@@ -46,54 +49,71 @@ public class Address {
 		this.userId = userId;
 		this.timestamp = timestamp;
 	}
+
 	public int getAddressId() {
 		return addressId;
 	}
+
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
+
 	public String getStreet() {
 		return street;
 	}
+
 	public void setStreet(String street) {
 		this.street = street;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public int getPincode() {
 		return pincode;
 	}
+
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
+
 	public String getState() {
 		return state;
 	}
+
 	public void setState(String state) {
 		this.state = state;
 	}
+
 	public int getHouseNumber() {
 		return houseNumber;
 	}
+
 	public void setHouseNumber(int houseNumber) {
 		this.houseNumber = houseNumber;
 	}
+
 	public int getUserId() {
 		return userId;
 	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
 	public Date getTimestamp() {
 		return timestamp;
 	}
+
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
+
 	@Override
 	public String toString() {
 		return "Address [addressId=" + addressId + ", street=" + street + ", city=" + city + ", pincode=" + pincode
@@ -102,4 +122,6 @@ public class Address {
 	}
 	
 	
+	
+
 }
