@@ -1,5 +1,7 @@
 package com.quickpharma.DTOs;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.BeanUtils;
 
 import com.quickpharma.entities.ContactUs;
@@ -7,9 +9,17 @@ import com.quickpharma.entities.ContactUs;
 public class ContactUsDto {
 	
 	private int id;
+	
+	@NotNull(message="null value not allowed")
 	private String name;
+	
+	@NotNull(message="null value not allowed")
 	private String email;
+	
+	@NotNull(message="null value not allowed")
 	private String subject;
+	
+	@NotNull(message="null value not allowed")
 	private String message;
 	
 	public ContactUsDto() {

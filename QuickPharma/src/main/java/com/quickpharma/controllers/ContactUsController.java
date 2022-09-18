@@ -3,6 +3,8 @@ package com.quickpharma.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quickpharma.DTOs.ContactUsDto;
@@ -25,7 +28,7 @@ public class ContactUsController {
 	private ContactUsService contactusservice;
 	
 	@PostMapping("/contactus")
-	public ResponseEntity<?> saveFeedback(ContactUsDto contactusdto) {
+	public ResponseEntity<?> saveFeedback(@RequestBody @Valid ContactUsDto contactusdto) {
 		
 		try {
 			
@@ -65,8 +68,9 @@ public class ContactUsController {
 		
 		try {
 			
-			contactusservice.deleteById(id);
-			
+			if(!contactusservice.deleteById(id))
+				return Response.error(id+":Record dose not exists");
+									
 			return Response.success(true);
 		}
 		catch(RuntimeException e) {
